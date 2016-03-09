@@ -1,0 +1,13 @@
+[package]
+name = "colorify"
+version = "0.1.0"
+authors = ["Nick Sanders <cogciprocate@gmail.com>"]
+description = "Convenience macros for printing to the terminal in color."
+documentation = "http://doc.cogciprocate.com/colorify/index.html"
+homepage = "https://github.com/cogciprocate/colorify"
+repository = "https://github.com/cogciprocate/colorify"
+readme = "README.md"
+keywords = ["color", "terminal", "ansi", "print"]
+license = "MIT"
+exclude = ["target/*", "bak/*"]
+
