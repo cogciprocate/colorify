@@ -8,7 +8,7 @@
 /// 
 /// `printc!(yellow: "Number of banana peels on head: {}", hat_height);`
 ///
-/// See [`colorify!` docs](http://doc.cogciprocate.com/ocl/macro.colorify!.html)
+/// See [`colorify!` docs](/colorify/colorify/macro.colorify!.html)
 /// for a current list of colors.
 #[macro_export]
 macro_rules! printc {
@@ -22,7 +22,7 @@ macro_rules! printc {
 /// 
 /// `printlnc!(orange: "Number of baggies filled while walking dogs: {}", bag_count);`
 ///
-/// See [`colorify!` docs](http://doc.cogciprocate.com/ocl/macro.colorify!.html)
+/// See [`colorify!` docs](/colorify/colorify/macro.colorify!.html)
 /// for a current list of colors.
 #[macro_export]
 macro_rules! printlnc {
