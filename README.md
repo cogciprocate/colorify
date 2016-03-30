@@ -2,7 +2,7 @@
 
 #### [Documentation](http://doc.cogciprocate.com/colorify/colorify)
 
-[![](http://meritbadge.herokuapp.com/ocl)](https://crates.io/crates/colorify)
+[![](http://meritbadge.herokuapp.com/colorify)](https://crates.io/crates/colorify)
 
 Handy macros for printing to the terminal in color.
 
