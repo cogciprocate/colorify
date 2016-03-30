@@ -1,23 +1,3 @@
-# colorify!
-
-#### [Documentation](http://doc.cogciprocate.com/colorify/colorify)
-
-[![](http://meritbadge.herokuapp.com/ocl)](https://crates.io/crates/colorify)
-
-Handy macros for printing to the terminal in color.
-
-## Usage
-
-Add the following to your `Cargo.toml`:
-
-```
-[dependencies]
-colorify = "0.2"
-```
-
-## Example
-
-```rust
 #[macro_use] extern crate colorify;
 use std::io::{self, Write};
 
@@ -31,4 +11,3 @@ fn main() {
 	writeln!(io::stdout(), colorify!(orange: "Number of baggies filled \
 		while walking dogs: {}"), 2).unwrap();
 }
-```

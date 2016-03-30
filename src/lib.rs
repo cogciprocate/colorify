@@ -1,10 +1,38 @@
 //! Format text printed to the terminal using ANSI colors.
+//!
+//! ## Usage
+//!
+//! Add the following to your `Cargo.toml`:
+//!
+//! ```text
+//! [dependencies]
+//! colorify = "0.2"
+//! ```
+//!
+//! ## Example
+//!
+//! ```
+//! #[macro_use] extern crate colorify;
+//! use std::io::{self, Write};
+//! 
+//! fn main() {
+//!     // List colors:
+//!     printc!(help);
+//! 
+//!     // Use one of three ways:
+//!     printc!(yellow: "Number of banana peels on head: {}", 7);
+//!     printlnc!(red: "Number of zombies killed: {}", 50);
+//!     writeln!(io::stdout(), colorify!(orange: "Number of baggies filled \
+//!         while walking dogs: {}"), 2).unwrap();
+//! }
+//! ```
+//!
 
 /// Returns a help string which lists all of the colors.
 #[macro_export]
 macro_rules! help {
      () => ( concat!(
-        "'colorify!' / 'printc!' / 'printlnc!'  Color List: {{ ",
+        "[colorify! | printc! | printlnc!] Color List: {{ ",
         "\x1b[0m", "default, ", "\x1b[0m",
         "\x1b[31m", "red, ", "\x1b[0m",
         "\x1b[1;31m", "red_bold, ", "\x1b[0m",
@@ -36,7 +64,11 @@ macro_rules! help {
         "\x1b[1;96m", "teal_bold, ", "\x1b[0m",
         "\x1b[97m", "white, ", "\x1b[0m",
         "\x1b[1;97m", "white_bold. ", "\x1b[0m",
-        " }}\n"
+        " }} ",
+        "Example: {{ ", 
+        "\x1b[97m", "printlnc!(peach: ",
+        "\x1b[91m", "\"Ain't things just peachy with colorify!\"",
+        "\x1b[97m", ")", "\x1b[0m", " }}",
     ) )
 }
 
@@ -52,6 +84,8 @@ macro_rules! help {
 /// for a current list of colors.
 #[macro_export]
 macro_rules! printc {
+    ($c:ident ) => ( print!(colorify!($c)) );
+    ($c:ident: ) => ( print!(colorify!($c)) );
     ($c:ident: $fmt:expr) => ( print!(colorify!($c: $fmt)) );
     ($c:ident: $fmt:expr, $($arg:tt)*) => ( print!(colorify!($c: $fmt), $($arg)*) );
 }
@@ -69,8 +103,8 @@ macro_rules! printlnc {
     // (help ) => ( help!() );
     // (help: ) => ( help!() );
     // (help: ($s:expr)*) => ( help!() );
-    ($c:ident ) => ( print!(concat!(colorify!($c), "\n")) );
-    ($c:ident: ) => ( print!(concat!(colorify!($c), "\n")) );
+    ($c:ident ) => ( print!(colorify!($c)) );
+    ($c:ident: ) => ( print!(colorify!($c)) );
     ($c:ident: $fmt:expr) => ( print!(concat!(colorify!($c: $fmt), "\n")) );
     ($c:ident: $fmt:expr, $($arg:tt)*) => ( print!(concat!(colorify!($c: $fmt), "\n"), $($arg)*) );
 }
@@ -83,8 +117,9 @@ macro_rules! printlnc {
 ///
 #[macro_export]
 macro_rules! colorify {
-    (help ) => ( help!() );
-    (help: ) => ( help!() );
+    (help ) => ( concat!(help!(), "\n") );
+    (help: ) => ( concat!(help!(), "\n") );
+    (help: $s:expr) => ( concat!(help!(), "\n", "\x1b[0m", $s, "\x1b[0m") );
     // (help: $fmt:expr) => ( help!() );
     // (help: $fmt:expr, $($arg:tt)*) => ( help!() );
     (default: $s:expr) => ( concat!("\x1b[0m", $s, "\x1b[0m") );
