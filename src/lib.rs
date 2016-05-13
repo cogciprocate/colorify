@@ -1,5 +1,7 @@
 //! Format text printed to the terminal using ANSI colors.
 //!
+//! 
+//!
 //! ## Usage
 //!
 //! Add the following to your `Cargo.toml`:
@@ -34,6 +36,8 @@ macro_rules! help {
      () => ( concat!(
         "[colorify! | printc! | printlnc!] Color List: {{ ",
         "\x1b[0m", "default, ", "\x1b[0m",
+        "\x1b[30m", "black, ", "\x1b[0m",
+        "\x1b[1;30m", "black_bold, ", "\x1b[0m",
         "\x1b[31m", "red, ", "\x1b[0m",
         "\x1b[1;31m", "red_bold, ", "\x1b[0m",
         "\x1b[32m", "green, ", "\x1b[0m",
@@ -100,9 +104,6 @@ macro_rules! printc {
 /// for a current list of colors.
 #[macro_export]
 macro_rules! printlnc {
-    // (help ) => ( help!() );
-    // (help: ) => ( help!() );
-    // (help: ($s:expr)*) => ( help!() );
     ($c:ident ) => ( print!(colorify!($c)) );
     ($c:ident: ) => ( print!(colorify!($c)) );
     ($c:ident: $fmt:expr) => ( print!(concat!(colorify!($c: $fmt), "\n")) );
@@ -120,15 +121,15 @@ macro_rules! colorify {
     (help ) => ( concat!(help!(), "\n") );
     (help: ) => ( concat!(help!(), "\n") );
     (help: $s:expr) => ( concat!(help!(), "\n", "\x1b[0m", $s, "\x1b[0m") );
-    // (help: $fmt:expr) => ( help!() );
-    // (help: $fmt:expr, $($arg:tt)*) => ( help!() );
     (default: $s:expr) => ( concat!("\x1b[0m", $s, "\x1b[0m") );
+    (black: $s:expr) => ( concat!("\x1b[30m", $s, "\x1b[0m") );
+    (black_bold: $s:expr) => ( concat!("\x1b[1;30m", $s, "\x1b[0m") );
     (red: $s:expr) => ( concat!("\x1b[31m", $s, "\x1b[0m") );
     (red_bold: $s:expr) => ( concat!("\x1b[1;31m", $s, "\x1b[0m") );
     (green: $s:expr) => ( concat!("\x1b[32m", $s, "\x1b[0m") );
     (green_bold: $s:expr) => ( concat!("\x1b[1;32m", $s, "\x1b[0m") );
     (orange: $s:expr) => ( concat!("\x1b[33m", $s, "\x1b[0m") );
-    (yellow_bold: $s:expr) => ( concat!("\x1b[1;33m", $s, "\x1b[0m") );
+    (orange_bold: $s:expr) => ( concat!("\x1b[1;33m", $s, "\x1b[0m") );
     (blue: $s:expr) => ( concat!("\x1b[34m", $s, "\x1b[0m") );
     (blue_bold: $s:expr) => ( concat!("\x1b[1;34m", $s, "\x1b[0m") );
     (purple: $s:expr) => ( concat!("\x1b[35m", $s, "\x1b[0m") );
@@ -144,7 +145,7 @@ macro_rules! colorify {
     (lime: $s:expr) => ( concat!("\x1b[92m", $s, "\x1b[0m") );
     (lime_bold: $s:expr) => ( concat!("\x1b[1;92m", $s, "\x1b[0m") );
     (yellow: $s:expr) => ( concat!("\x1b[93m", $s, "\x1b[0m") );
-    (yellow_bold2: $s:expr) => ( concat!("\x1b[1;93m", $s, "\x1b[0m") );
+    (yellow_bold: $s:expr) => ( concat!("\x1b[1;93m", $s, "\x1b[0m") );
     (royal_blue: $s:expr) => ( concat!("\x1b[94m", $s, "\x1b[0m") );
     (royal_blue_bold: $s:expr) => ( concat!("\x1b[1;94m", $s, "\x1b[0m") );
     (magenta: $s:expr) => ( concat!("\x1b[95m", $s, "\x1b[0m") );
