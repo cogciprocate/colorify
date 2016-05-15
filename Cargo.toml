@@ -1,8 +1,8 @@
 [package]
 name = "colorify"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Nick Sanders <cogciprocate@gmail.com>"]
-description = "Convenience macros for printing to the terminal in color."
+description = "Convenience macros for printing to the terminal in color on non-Windows platforms."
 documentation = "http://doc.cogciprocate.com/colorify/colorify/index.html"
 homepage = "https://github.com/cogciprocate/colorify"
 repository = "https://github.com/cogciprocate/colorify"
