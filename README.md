@@ -32,3 +32,15 @@ fn main() {
 		while walking dogs: {}"), 2).unwrap();
 }
 ```
+
+## Retired
+
+This library is unlikely to be updated with new features or changes.
+
+Recommended alternatives:
+
+* [term](https://github.com/Stebalien/term)
+* [rust-ansi-term](https://github.com/ogham/rust-ansi-term)
+* [colored](https://github.com/mackwic/colored)
+* [termcolor](https://github.com/BurntSushi/ripgrep/tree/master/termcolor)
+

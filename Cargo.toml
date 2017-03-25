@@ -7,7 +7,7 @@ documentation = "http://doc.cogciprocate.com/colorify/colorify/index.html"
 homepage = "https://github.com/cogciprocate/colorify"
 repository = "https://github.com/cogciprocate/colorify"
 readme = "README.md"
-keywords = ["color", "terminal", "ansi", "print"]
+keywords = ["color", "terminal", "ansi", "print", "console", "format"]
 license = "MIT"
 exclude = ["target/*", "bak/*"]
 
