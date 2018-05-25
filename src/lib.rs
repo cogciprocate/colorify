@@ -36,7 +36,8 @@
 ///
 /// `writeln!(fmtr, colorify!(red: "Number of zombies killed: {}"), zombie_kills);`
 ///
-#[cfg(not(windows))]
+// #[cfg(any(not(windows), feature = "enable_windows"))]
+#[cfg(any(not(windows), feature = "enable_windows"))]
 #[macro_export]
 macro_rules! colorify {
     (help ) => ( concat!(help!(), "\n") );
@@ -77,7 +78,7 @@ macro_rules! colorify {
     (white_bold2: $s:expr) => ( concat!("\x1b[1;97m", $s, "\x1b[0m") );
 }
 
-#[cfg(windows)]
+#[cfg(all(windows, not(feature = "enable_windows")))]
 #[macro_export]
 macro_rules! colorify {
     (help ) => ( concat!(help!(), "\n") );

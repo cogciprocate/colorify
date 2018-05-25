@@ -11,3 +11,7 @@ keywords = ["color", "terminal", "ansi", "print", "console", "format"]
 license = "MIT"
 exclude = ["target/*", "bak/*"]
 
+[features]
+# Enables on windows. Ensure your windows terminal has ANSI support already
+# enabled.
+enable_windows = []
